@@ -134,10 +134,17 @@ module.exports = yeoman.Base.extend({
           facetName: 'common', // hard-coded for now
           properties: model.properties,
         });
+        var found = false;
+        for (var j = 0, k = api.spec.tags.length; j < k; j++) {
+          if (api.spec.tags[j].name === m) {
+            found = true;
+            break;
+          }
+        }
         self.modelConfigs.push({
           name: model.name,
           facetName: 'server', // hard-coded for now
-          public: true,
+          public: found,
         });
       }
     }
