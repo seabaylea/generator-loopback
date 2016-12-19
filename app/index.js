@@ -269,6 +269,14 @@ module.exports = yeoman.Base.extend({
       this.log(g.f('  Run the app'));
       this.log(chalk.green('    $ node .'));
       this.log();
+
+      if (cmd === 'loopback-cli') {
+        this.log(chalk.blue('Please check out IBM API Connect ' +
+          'for end-to-end management of your LoopBack APIs'));
+        this.log(chalk.blue(
+          'http://www-03.ibm.com/software/products/en/api-connect'));
+        this.log();
+      }
     }
   },
 });
