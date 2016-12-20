@@ -231,6 +231,22 @@ module.exports = yeoman.Base.extend({
     this.directory('.', '.');
   },
 
+  writeManifest: function() {
+    var manifest = `applications:\n` +
+                   `- name: ${this.appname}\n` +
+                   `  memory: 256M\n` +
+                   `  instances: 1\n` +
+                   `  random-route: true\n`;
+    this.log(g.f('Generating {{manifest.yml}}'));
+    this.fs.write(this.destinationPath('manifest.yml'), manifest);
+  },
+
+  writeCfIgnore: function() {
+    var cfignore = `node_modules/*\n`;
+    this.log(g.f('Generating {{.cfignore}}'));	
+        this.fs.write(this.destinationPath('.cfignore'), cfignore);
+  },
+
   generateYoRc: function() {
     this.log(g.f('Generating {{.yo-rc.json}}'));
     this.config.save();
